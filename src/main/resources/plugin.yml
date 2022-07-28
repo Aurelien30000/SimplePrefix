@@ -1,0 +1,12 @@
+name: SimplePrefix
+main: com.flabaliki.simpleprefix.SimplePrefix
+version: ${project.version}
+api-version: 1.19
+authors: [ Flabaliki, chaseoes, BaranCODE, Aurelien30000 ]
+description: Easy prefixes & suffixes
+website: https://dev.bukkit.org/bukkit-plugins/simple-prefix/
+softdepend: [ Vault ]
+commands:
+  spr:
+    description: Multiple commands, use '/spr help' to see all.
+    usage: "/spr help"
