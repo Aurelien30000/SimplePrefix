@@ -88,13 +88,15 @@ public class SimplePrefix extends JavaPlugin implements Listener {
     }
 
     private void handleChat(AsyncPlayerChatEvent event) {
-        Player player = event.getPlayer();
-        String prefix = config.getPrefix(player);
-        String suffix = config.getSuffix(player);
-        String world = config.getWorld(player);
-        String message = event.getMessage().replaceAll("%", "%%");
-        if (template == null) template = "<[time] [world] [prefix][name][suffix]> ";
-        if (timeFormat == null) timeFormat = "[h:mm aa]";
+        final Player player = event.getPlayer();
+        final String prefix = config.getPrefix(player);
+        final String suffix = config.getSuffix(player);
+        final String world = config.getWorld(player);
+        final String message = event.getMessage().replaceAll("%", "%%");
+        if (template == null)
+            template = "<[time] [world] [prefix][name][suffix]> ";
+        if (timeFormat == null)
+            timeFormat = "[h:mm aa]";
         String formattedName = template
                 .replaceAll("\\[world]", world)
                 .replaceAll("\\[prefix]", prefix)
@@ -102,8 +104,8 @@ public class SimplePrefix extends JavaPlugin implements Listener {
                 .replaceAll("\\[suffix]", suffix)
                 .replaceAll("(&([A-Fa-f0-9L-Ol-okKrR]))", "§$2");
         if ((timeFormat != null) && (!timeFormat.equalsIgnoreCase("")) && (formattedName.contains("[time]"))) {
-            DateFormat dateFormat = new SimpleDateFormat(timeFormat);
-            Date date = new Date();
+            final DateFormat dateFormat = new SimpleDateFormat(timeFormat);
+            final Date date = new Date();
             formattedName = formattedName.replaceAll("\\[time]", dateFormat.format(date));
         }
         formattedName = formattedName.replaceAll("\\s+", " ");
